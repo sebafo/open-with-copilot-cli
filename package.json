@@ -1,0 +1,65 @@
+{
+  "name": "open-with-copilot-cli",
+  "displayName": "Open with Copilot CLI",
+  "description": "Open an Explorer folder with GitHub Copilot CLI in the macOS system Terminal.",
+  "version": "0.1.1",
+  "publisher": "local",
+  "license": "MIT",
+  "homepage": "https://github.com/sebafo/open-with-copilot-cli#readme",
+  "bugs": {
+    "url": "https://github.com/sebafo/open-with-copilot-cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebafo/open-with-copilot-cli.git"
+  },
+  "keywords": [
+    "copilot",
+    "copilot-cli",
+    "explorer",
+    "macos",
+    "terminal"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test out/test/**/*.test.js",
+    "vscode:prepublish": "npm test",
+    "package": "npx --yes @vscode/vsce package"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "openWithCopilotCli.openFolder",
+        "title": "Open Folder with Copilot CLI"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "openWithCopilotCli.openFolder",
+          "when": "isMac && resourceScheme == file && explorerResourceIsFolder",
+          "group": "navigation@99"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "openWithCopilotCli.openFolder",
+          "when": "false"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.5.0"
+  }
+}

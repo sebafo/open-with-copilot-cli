@@ -1,0 +1,11 @@
+.vscode/**
+.github/**
+src/**
+tsconfig.json
+out/test/**
+**/*.map
+node_modules/**
+.gitignore
+CHANGELOG.md
+CONTRIBUTING.md
+SECURITY.md
